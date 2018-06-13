@@ -5,7 +5,7 @@ const config = require('./config')
 const resource = 'users'
 
 module.exports = {
-  name: 'users-routes',
+  name: 'users',
   register: async (server) => {
     const routes = [{
       method: 'GET',

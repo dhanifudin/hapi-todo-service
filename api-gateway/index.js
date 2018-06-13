@@ -3,7 +3,7 @@
 require('dotenv').config()
 
 const hapi = require('hapi')
-const mongoose = require('./lib/mongoose')
+const jwt = require('./lib/jwt')
 
 const server = hapi.server({
   host: process.env.APP_HOST,
@@ -17,15 +17,14 @@ const server = hapi.server({
 
 const start = async () => {
   try {
-    const routes = [
-      require('./users'),
+    const plugins = [
+      jwt,
+      require('./proxy'),
     ]
-    await server.register(routes)
-
-    await mongoose.connect()
+    await server.register(plugins)
     await server.start()
   } catch (err) {
-    console.log(err)
+    console.error(err)
     process.exit(1)
   }
   console.log('Server running at: ', server.info.uri)

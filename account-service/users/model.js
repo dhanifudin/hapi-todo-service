@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const util = require('../lib/util')
 
 const User = new mongoose.Schema({
-  email: {
+  username: {
     type: String,
   },
   name: {
