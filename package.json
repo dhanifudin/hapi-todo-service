@@ -1,0 +1,26 @@
+{
+  "name": "hapi-todo-service",
+  "version": "1.0.0",
+  "description": "Todo service built on top Hapi",
+  "keywords": [
+    "todo",
+    "hapi",
+    "hapijs"
+  ],
+  "author": "Dian Hanifudin Subhi <dhanifudin@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^2.0.1",
+    "boom": "^7.2.0",
+    "dotenv": "^6.0.0",
+    "h2o2": "^8.1.2",
+    "hapi": "^17.5.1",
+    "hapi-auth-jwt2": "^8.1.0",
+    "joi": "^13.4.0",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.1.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
