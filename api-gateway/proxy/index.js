@@ -3,7 +3,8 @@
 const h2o2 = require('h2o2')
 
 const users = require('./users')
-const proxies = [].concat(users)
+const todo = require('./todo')
+const proxies = [].concat(users, todo)
 
 module.exports = {
   name: 'proxy',
