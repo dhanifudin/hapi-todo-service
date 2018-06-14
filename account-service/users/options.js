@@ -1,6 +1,8 @@
 'use strict'
 
 const joi = require('joi')
+const joiObjectId = require('../lib/joi-objectid')
+
 const headers = joi.object({
   user: joi.string().required()
 }).options({ allowUnknown: true })
@@ -20,7 +22,7 @@ module.exports = {
   show: {
     validate: {
       params: {
-        id: joi.string().required(),
+        id: joiObjectId.string().objectId().required(),
       }
     }
   },
@@ -28,7 +30,7 @@ module.exports = {
     validate: {
       headers,
       params: {
-        id: joi.string().required(),
+        id: joiObjectId.string().objectId().required(),
       },
       payload: {
         name: joi.string().required(),
@@ -40,7 +42,7 @@ module.exports = {
     validate: {
       headers,
       params: {
-        id: joi.string().required(),
+        id: joiObjectId.string().objectId().required(),
       }
     }
   }

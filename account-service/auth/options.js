@@ -6,7 +6,8 @@ module.exports = {
   login: {
     validate: {
       payload: {
-        username: joi.string().required()
+        username: joi.string().required(),
+        password: joi.string().required(),
       }
     }
   }
