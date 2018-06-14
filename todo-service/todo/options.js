@@ -35,6 +35,15 @@ module.exports = {
       }
     }
   },
+  done: {
+    validate: {
+      headers,
+      params: {
+        id: joi.string().required(),
+        done: joi.string().allow(['done', 'undone']).required()
+      }
+    }
+  },
   destroy: {
     validate: {
       headers,

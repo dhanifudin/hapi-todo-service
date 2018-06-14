@@ -29,11 +29,10 @@ module.exports = {
     try {
       const { id } = request.params
       const { user } = request.headers
-      const result = await repository.findOne(id)
+      const query = { _id: id, user }
+      const result = await repository.findOne(query)
       if (!result)
         throw boom.notFound()
-      if (!result.user != user)
-        throw boom.unauthorized()
       return h.response(result)
     } catch (err) {
       console.error(err)
@@ -43,9 +42,10 @@ module.exports = {
   update: async (request, h) => {
     try {
       const { id } = request.params
-      // const { user } = request.headers
+      const { user } = request.headers
+      const query = { _id: id, user }
       const { payload } = request
-      const result = await repository.update(id, payload)
+      const result = await repository.update(query, payload)
       if (!result)
         throw boom.notFound()
       return h.response(result)
@@ -54,10 +54,27 @@ module.exports = {
       throw boom.badImplementation()
     }
   },
+  done: async (request, h) => {
+    try {
+      const { id, done } = request.params
+      const { user } = request.headers
+      const query = { _id: id, user }
+      const payload = { done: (done === 'done') }
+      const result = await repository.update(query, payload)
+      if (!result)
+        throw boom.notFound()
+      return h.response(result)
+    } catch (err) {
+      console.error(err)
+      throw boom.badImplementation()
+    }
+  },
   destroy: async (request, h) => {
     try {
       const { id } = request.params
-      const result = await repository.destroy(id)
+      const { user } = request.headers
+      const query = { _id: id, user }
+      const result = await repository.destroy(query)
       if (!result)
         throw boom.notFound()
       return h.response(result)

@@ -28,6 +28,11 @@ module.exports = {
       handler: handler.update,
       options: options.update,
     }, {
+      method: 'PUT',
+      path: `/${resource}/{id}/{done}`,
+      handler: handler.done,
+      options: options.done,
+    }, {
       method: 'DELETE',
       path: `/${resource}/{id}`,
       handler: handler.destroy,
