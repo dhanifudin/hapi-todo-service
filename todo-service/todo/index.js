@@ -2,10 +2,10 @@
 
 const handler = require('./handler')
 const options = require('./options')
-const resource = 'users'
+const resource = 'todo'
 
 module.exports = {
-  name: 'users',
+  name: 'todo',
   register: async (server) => {
     const routes = [{
       method: 'GET',

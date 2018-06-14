@@ -6,6 +6,7 @@ const util = require('../lib/util')
 const User = new mongoose.Schema({
   username: {
     type: String,
+    index: true,
   },
   name: {
     type: String
@@ -16,11 +17,11 @@ const User = new mongoose.Schema({
 })
 
 User.method('toJSON', function () {
-  const user = this.toObject({ virtuals: true })
-  delete user._id
-  delete user.password
-  delete user.__v
-  return user
+  const obj = this.toObject({ virtuals: true })
+  delete obj._id
+  delete obj.password
+  delete obj.__v
+  return obj
 })
 
 User.pre('save', async function (next) {
